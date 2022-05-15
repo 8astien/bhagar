@@ -1,15 +1,14 @@
-function botLimit() {
+function botMapLimit() {
 	let botPosition = MOB.position.x;
 	if (botPosition < 80) {
-		MOB.velocity.x = 5;
+		MOB.velocity.x = 10;
 	} else if (botPosition > 800) {
-		MOB.velocity.x = -5;
+		MOB.velocity.x = -10;
 	}
 }
 
 function botGen() {
 	let dice = Math.floor(Math.random() * 6);
-	console.log(dice);
 	switch (dice) {
         case 1 :
             MOB.position.x = 1200;
@@ -41,6 +40,3 @@ function botGen() {
             break;
     }
 }
-
-// MOB.position.x = 1200;
-// 	MOB.health = 50;
