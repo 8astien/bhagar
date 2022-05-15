@@ -26,6 +26,7 @@ const PLAYER = new Fighter({
 	},
 	width: 50,
 	health: 100,
+	imageSrc: './assets/test.png'
 });
 
 const MOB = new Mob({
@@ -40,7 +41,7 @@ const MOB = new Mob({
 	width: 150,
 	health: 50,
 	imageSrc: './assets/ball.png',
-	scale: 0.005
+	// scale: 0.005
 });
 
 const KEYS = {
