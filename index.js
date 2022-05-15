@@ -25,10 +25,10 @@ const PLAYER = new Fighter({
 		y: 10,
 	},
 	width: 50,
-	health: 500,
+	health: 100,
 });
 
-const MOB = new Fighter({
+const MOB = new Mob({
 	position: {
 		x: 1200,
 		y: 0,
@@ -38,8 +38,9 @@ const MOB = new Fighter({
 		y: 10,
 	},
 	width: 150,
-	color: "blue",
 	health: 50,
+	imageSrc: './assets/ball.png',
+	scale: 0.005
 });
 
 const KEYS = {
@@ -67,7 +68,7 @@ function animate() {
 	BACKGROUND.update();
 	PLAYER.update();
 	MOB.update();
-	botLimit();
+	botMapLimit();
 
 	PLAYER.velocity.x = 0;
 
@@ -86,13 +87,21 @@ function animate() {
 		PLAYER.attackBox.position.y <= MOB.position.y + MOB.height &&
 		PLAYER.isAttacking
 	) {
-		console.log("go");
 		MOB.health -= 5;
-		console.log(MOB.health);
 		PLAYER.isAttacking == false;
 		if (MOB.health <= 0) {
 			botGen();
 		}
+	}
+
+	if(MOB.position.x == PLAYER.position.x ) {
+		PLAYER.health -= 25
+		console.log(PLAYER.health)
+	}
+
+	if (PLAYER.health <= 0) {
+		// let doc = document.querySelector('body')
+		// doc.innerHTML = 'T MOR'
 	}
 }
 
