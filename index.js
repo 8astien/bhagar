@@ -1,7 +1,7 @@
 // General CONST
 const CANVAS = document.querySelector("canvas");
 const CONTEXT = CANVAS.getContext("2d");
-const GRAVITY = 0.7;
+const GRAVITY = 1;
 
 CANVAS.width = 1024;
 CANVAS.height = 576;
@@ -42,11 +42,6 @@ const MOB = new Fighter({
 	health: 50,
 });
 
-PLAYER.draw();
-MOB.draw();
-
-console.log(PLAYER);
-
 const KEYS = {
 	ArrowRight: {
 		pressed: false,
@@ -60,6 +55,9 @@ const KEYS = {
 };
 let lastKey;
 
+MOB.draw();
+PLAYER.draw();
+let mobGen = setInterval(MOB.draw(), 100);
 
 function animate() {
 	window.requestAnimationFrame(animate);
@@ -69,7 +67,7 @@ function animate() {
 	BACKGROUND.update();
 	PLAYER.update();
 	MOB.update();
-	bot();
+	botLimit();
 
 	PLAYER.velocity.x = 0;
 
@@ -93,13 +91,12 @@ function animate() {
 		console.log(MOB.health);
 		PLAYER.isAttacking == false;
 		if (MOB.health <= 0) {
-			MOB.velocity.y = 200;
+			botGen();
 		}
 	}
 }
 
 animate();
-
 
 window.addEventListener("keydown", (event) => {
 	switch (event.key) {
