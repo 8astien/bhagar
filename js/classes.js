@@ -25,8 +25,10 @@ class Fighter {
     width, 
     color = "green", 
     health,
+
     
    }) {
+
 		this.position = position;
 		this.velocity = velocity;
 		this.height = 150;
